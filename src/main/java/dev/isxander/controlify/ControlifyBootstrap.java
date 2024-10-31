@@ -31,7 +31,6 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
 *///?} else {
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -39,7 +38,11 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod("controlify")
 public class ControlifyBootstrap {
-    public ControlifyBootstrap(IEventBus modBus) {
+    //? if neoforge {
+    /*public ControlifyBootstrap(IEventBus modBus) {
+    *///?} else {
+    public ControlifyBootstrap() {
+    //?}
         ControlifyServer.getInstance().onInitialize();
 
         ModLoadingContext.get().registerExtensionPoint(
