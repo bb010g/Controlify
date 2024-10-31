@@ -10,7 +10,7 @@ public interface RenderLayer
     *///?} elif neoforge {
     /*extends net.neoforged.neoforge.client.gui.overlay.IGuiOverlay
     *///?} elif forge {
-    extends net.minecraftforge.neoforge.client.gui.overlay.IGuiOverlay
+    extends net.minecraftforge.client.gui.overlay.IGuiOverlay
     //?}
 {
     void render(GuiGraphics graphics, float tickDelta);
@@ -26,7 +26,7 @@ public interface RenderLayer
         this.render(graphics, partialTick);
     }
     *///?} elif forge {
-    default void render(@NotNull net.minecraftforge.neoforge.client.gui.overlay.ExtendedGui gui, @NotNull GuiGraphics graphics, float partialTick, int screenWidth, int screenHeight) {
+    default void render(@NotNull GuiGraphics graphics, float partialTick, int screenWidth, int screenHeight) {
         this.render(graphics, partialTick);
     }
     //?}

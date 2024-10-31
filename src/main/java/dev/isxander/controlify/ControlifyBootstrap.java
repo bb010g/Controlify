@@ -31,7 +31,7 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
 *///?} else {
-import net.minecraftforge.bus.api.IEventBus;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -51,8 +51,8 @@ public class ControlifyBootstrap {
                 () -> new net.neoforged.neoforge.client.ConfigScreenHandler.ConfigScreenFactory(
                         (client, parent) -> new ModConfigOpenerScreen(parent))
                 *///?} else {
-                net.minecraftforge.neoforge.client.ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new net.minecraftforge.neoforge.client.ConfigScreenHandler.ConfigScreenFactory(
+                net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory.class,
+                () -> new net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory(
                         (client, parent) -> new ModConfigOpenerScreen(parent))
                 //?}
         );

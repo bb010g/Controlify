@@ -6,7 +6,7 @@ import net.minecraft.world.item.CreativeModeTab;
 //? if neoforge {
 /*import net.neoforged.neoforge.client.gui.CreativeTabsScreenPage;
 *///?} else {
-import net.minecraftforge.neoforge.client.gui.CreativeTabsScreenPage;
+import net.minecraftforge.client.gui.CreativeTabsScreenPage;
 //?}
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;

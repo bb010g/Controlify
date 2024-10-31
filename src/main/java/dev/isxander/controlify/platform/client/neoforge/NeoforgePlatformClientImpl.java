@@ -34,14 +34,14 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.GameShuttingDownEvent;
 import net.neoforged.neoforgespi.language.IModInfo;
 *///?} else {
-import net.minecraftforge.bus.api.IEventBus;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.neoforge.client.event.*;
-import net.minecraftforge.neoforge.common.NeoForge;
-import net.minecraftforge.neoforge.event.AddPackFindersEvent;
-import net.minecraftforge.neoforge.event.GameShuttingDownEvent;
-import net.minecraftforge.neoforgespi.language.IModInfo;
+import net.minecraftforge.client.event.*;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.event.GameShuttingDownEvent;
+import net.minecraftforge.forgespi.language.IModInfo;
 //?}
 import org.jetbrains.annotations.Nullable;
 
@@ -63,8 +63,8 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
             if (e.phase != net.neoforged.neoforge.event.TickEvent.Phase.START)
                 return;
         *///?} else {
-        NeoForge.EVENT_BUS.<net.minecraftforge.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
-            if (e.phase != net.minecraftforge.neoforge.event.TickEvent.Phase.START)
+        MinecraftForge.EVENT_BUS.<net.minecraftforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+            if (e.phase != net.minecraftforge.event.TickEvent.Phase.START)
                 return;
         //?}
             event.onTick(Minecraft.getInstance());
@@ -80,8 +80,8 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
             if (e.phase != net.neoforged.neoforge.event.TickEvent.Phase.END)
                 return;
         *///?} else {
-        NeoForge.EVENT_BUS.<net.minecraftforge.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
-            if (e.phase != net.minecraftforge.neoforge.event.TickEvent.Phase.END)
+        MinecraftForge.EVENT_BUS.<net.minecraftforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+            if (e.phase != net.minecraftforge.event.TickEvent.Phase.END)
                 return;
         //?}
             event.onTick(Minecraft.getInstance());
@@ -90,14 +90,22 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
 
     @Override
     public void registerClientStopping(LifecycleEvent event) {
-        NeoForge.EVENT_BUS.<GameShuttingDownEvent>addListener(e -> {
+        //? if neoforge {
+        /*NeoForge.EVENT_BUS.<GameShuttingDownEvent>addListener(e -> {
+        *///?} else {
+        MinecraftForge.EVENT_BUS.<GameShuttingDownEvent>addListener(e -> {
+        //?}
             event.onLifecycle(Minecraft.getInstance());
         });
     }
 
     @Override
     public void registerClientDisconnected(DisconnectedEvent event) {
-        NeoForge.EVENT_BUS.<ClientPlayerNetworkEvent.LoggingOut>addListener(e -> {
+        //? if neoforge {
+        /*NeoForge.EVENT_BUS.<ClientPlayerNetworkEvent.LoggingOut>addListener(e -> {
+        *///?} else {
+        MinecraftForge.EVENT_BUS.<ClientPlayerNetworkEvent.LoggingOut>addListener(e -> {
+        //?}
             event.onDisconnected(Minecraft.getInstance());
         });
     }
@@ -155,7 +163,11 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
 
     @Override
     public void registerPostScreenRender(ScreenRenderEvent event) {
-        NeoForge.EVENT_BUS.<ScreenEvent.Render.Post>addListener(e -> {
+        //? if neoforge {
+        /*NeoForge.EVENT_BUS.<ScreenEvent.Render.Post>addListener(e -> {
+        *///?} else {
+        MinecraftForge.EVENT_BUS.<ScreenEvent.Render.Post>addListener(e -> {
+        //?}
             event.onRender(e.getScreen(), e.getGuiGraphics(), e.getMouseX(), e.getMouseY(), e.getPartialTick());
         });
     }
@@ -188,7 +200,11 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     }
 
     private IEventBus getModEventBus() {
-        return ModLoadingContext.get().getActiveContainer().getEventBus();
+        //? if neoforge {
+        /*return ModLoadingContext.get().getActiveContainer().getEventBus();
+        *///?} else {
+        return FMLJavaModLoadingContext.get().getModEventBus();
+        //?}
     }
 }
 //?}
