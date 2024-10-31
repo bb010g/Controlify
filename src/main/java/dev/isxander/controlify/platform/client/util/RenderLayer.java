@@ -3,7 +3,7 @@ package dev.isxander.controlify.platform.client.util;
 import net.minecraft.client.gui.GuiGraphics;
 import org.jetbrains.annotations.NotNull;
 
-@FunctionalInterface
+//@FunctionalInterface
 public interface RenderLayer
     //? if >1.20.4 {
     /*extends net.minecraft.client.gui.LayeredDraw.Layer

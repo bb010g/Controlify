@@ -107,7 +107,8 @@ public class NeoforgePlatformMainImpl implements PlatformMainUtilImpl {
 
     @Override
     public <T> Supplier<T> deferredRegister(Registry<T> registry, ResourceLocation id, Supplier<? extends T> registrant) {
-        return DeferredRegister.create(registry, id.getNamespace()).register(id.getPath(), registrant);
+        //return DeferredRegister.create(registry, id.getNamespace()).register(id.getPath(), registrant);
+        return null;
     }
 
     private IEventBus getModEventBus() {

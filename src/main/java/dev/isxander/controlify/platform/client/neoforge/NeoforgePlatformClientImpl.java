@@ -139,7 +139,11 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
                     packLocation.toString(),
                     displayName,
                     true,
-                    BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath, true)),
+                    //? if neoforge {
+                    /*BuiltInPackSource.fromName((path) -> new PathPackResources(path, resourcePath, true)),
+                    *///?} else {
+                    (path) -> new PathPackResources(path, resourcePath, true),
+                    //?}
                     PackType.CLIENT_RESOURCES,
                     Pack.Position.BOTTOM,
                     PackSource.BUILT_IN
@@ -151,14 +155,14 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
 
     @Override
     public void addHudLayer(ResourceLocation id, RenderLayer renderLayer) {
-        getModEventBus().addListener(
-                //? if >1.20.4 {
-                /*RegisterGuiLayersEvent.class,
-                *///?} else {
-                RegisterGuiOverlaysEvent.class,
-                //?}
-                e -> e.registerAboveAll(id, renderLayer)
-        );
+        //getModEventBus().addListener(
+        //        //? if >1.20.4 {
+        //        /*RegisterGuiLayersEvent.class,
+        //        *///?} else {
+        //        RegisterGuiOverlaysEvent.class,
+        //        //?}
+        //        e -> e.registerAboveAll(id, renderLayer)
+        //);
     }
 
     @Override
@@ -182,10 +186,10 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     private Collection<KeyMapping> calculateModdedKeyMappings() {
         Options options = Minecraft.getInstance().options;
         KeyMapping[] vanillaAndModded = options.keyMappings;
-        List<KeyMapping> vanillaOnly = Arrays.asList(((VanillaKeyMappingHolder) options).controlify$getVanillaKeys());
+        //List<KeyMapping> vanillaOnly = Arrays.asList(((VanillaKeyMappingHolder) options).controlify$getVanillaKeys());
 
         return Arrays.stream(vanillaAndModded)
-                .filter(key -> !vanillaOnly.contains(key))
+                //.filter(key -> !vanillaOnly.contains(key))
                 .toList();
     }
 
