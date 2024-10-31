@@ -24,7 +24,8 @@ import net.minecraft.server.packs.repository.BuiltInPackSource;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.server.packs.repository.RepositorySource;
-import net.neoforged.bus.api.IEventBus;
+//? if neoforge {
+/*import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.event.*;
@@ -32,6 +33,16 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.GameShuttingDownEvent;
 import net.neoforged.neoforgespi.language.IModInfo;
+*///?} else {
+import net.minecraftforge.bus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.neoforge.client.event.*;
+import net.minecraftforge.neoforge.common.NeoForge;
+import net.minecraftforge.neoforge.event.AddPackFindersEvent;
+import net.minecraftforge.neoforge.event.GameShuttingDownEvent;
+import net.minecraftforge.neoforgespi.language.IModInfo;
+//?}
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
@@ -47,9 +58,13 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     public void registerClientTickStarted(TickEvent event) {
         //? if >=1.20.6 {
         /*NeoForge.EVENT_BUS.<ClientTickEvent.Pre>addListener(e -> {
-        *///?} else {
-        NeoForge.EVENT_BUS.<net.neoforged.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+        *///?} elif neoforge {
+        /*NeoForge.EVENT_BUS.<net.neoforged.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
             if (e.phase != net.neoforged.neoforge.event.TickEvent.Phase.START)
+                return;
+        *///?} else {
+        NeoForge.EVENT_BUS.<net.minecraftforge.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+            if (e.phase != net.minecraftforge.neoforge.event.TickEvent.Phase.START)
                 return;
         //?}
             event.onTick(Minecraft.getInstance());
@@ -60,9 +75,13 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     public void registerClientTickEnded(TickEvent event) {
         //? if >=1.20.6 {
         /*NeoForge.EVENT_BUS.<ClientTickEvent.Pre>addListener(e -> {
-        *///?} else {
-        NeoForge.EVENT_BUS.<net.neoforged.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+        *///?} elif neoforge {
+        /*NeoForge.EVENT_BUS.<net.neoforged.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
             if (e.phase != net.neoforged.neoforge.event.TickEvent.Phase.END)
+                return;
+        *///?} else {
+        NeoForge.EVENT_BUS.<net.minecraftforge.neoforge.event.TickEvent.ClientTickEvent>addListener(e -> {
+            if (e.phase != net.minecraftforge.neoforge.event.TickEvent.Phase.END)
                 return;
         //?}
             event.onTick(Minecraft.getInstance());

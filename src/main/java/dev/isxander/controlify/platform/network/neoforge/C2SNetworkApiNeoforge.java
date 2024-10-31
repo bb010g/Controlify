@@ -5,8 +5,13 @@ import dev.isxander.controlify.platform.network.C2SNetworkApi;
 import dev.isxander.controlify.platform.network.ControlifyPacketCodec;
 import dev.isxander.controlify.platform.network.PacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.bus.api.IEventBus;
+//? if neoforge {
+/*import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
+*///?} else {
+import net.minecraftforge.bus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
+//?}
 
 public class C2SNetworkApiNeoforge implements C2SNetworkApi {
     public static final C2SNetworkApiNeoforge INSTANCE = new C2SNetworkApiNeoforge();

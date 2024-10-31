@@ -25,10 +25,17 @@ public class ControlifyBootstrap implements ClientModInitializer, ModInitializer
 }
 *///?} elif forgelike {
 import dev.isxander.controlify.gui.screen.ModConfigOpenerScreen;
-import net.neoforged.bus.api.IEventBus;
+//? if neoforge {
+/*import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
+*///?} else {
+import net.minecraftforge.bus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+//?}
 
 @Mod("controlify")
 public class ControlifyBootstrap {
@@ -39,9 +46,13 @@ public class ControlifyBootstrap {
                 //? if >=1.20.6 {
                 /*net.neoforged.neoforge.client.gui.IConfigScreenFactory.class,
                 () -> (client, parent) -> new ModConfigOpenerScreen(parent)
-                *///?} else {
-                net.neoforged.neoforge.client.ConfigScreenHandler.ConfigScreenFactory.class,
+                *///?} elif neoforge {
+                /*net.neoforged.neoforge.client.ConfigScreenHandler.ConfigScreenFactory.class,
                 () -> new net.neoforged.neoforge.client.ConfigScreenHandler.ConfigScreenFactory(
+                        (client, parent) -> new ModConfigOpenerScreen(parent))
+                *///?} else {
+                net.minecraftforge.neoforge.client.ConfigScreenHandler.ConfigScreenFactory.class,
+                () -> new net.minecraftforge.neoforge.client.ConfigScreenHandler.ConfigScreenFactory(
                         (client, parent) -> new ModConfigOpenerScreen(parent))
                 //?}
         );

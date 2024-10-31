@@ -11,7 +11,8 @@ import dev.isxander.controlify.platform.network.ControlifyPacketCodec;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.bus.api.IEventBus;
+//? if neoforge {
+/*import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -20,6 +21,17 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+*///?} else {
+import net.minecraftforge.bus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.neoforge.common.NeoForge;
+import net.minecraftforge.neoforge.event.RegisterCommandsEvent;
+import net.minecraftforge.neoforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.neoforge.registries.DeferredRegister;
+//?}
 
 import java.nio.file.Path;
 import java.util.Arrays;
