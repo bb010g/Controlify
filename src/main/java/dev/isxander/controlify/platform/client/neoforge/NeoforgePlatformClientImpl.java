@@ -186,10 +186,10 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
     private Collection<KeyMapping> calculateModdedKeyMappings() {
         Options options = Minecraft.getInstance().options;
         KeyMapping[] vanillaAndModded = options.keyMappings;
-        //List<KeyMapping> vanillaOnly = Arrays.asList(((VanillaKeyMappingHolder) options).controlify$getVanillaKeys());
+        List<KeyMapping> vanillaOnly = Arrays.asList(((VanillaKeyMappingHolder) options).controlify$getVanillaKeys());
 
         return Arrays.stream(vanillaAndModded)
-                //.filter(key -> !vanillaOnly.contains(key))
+                .filter(key -> !vanillaOnly.contains(key))
                 .toList();
     }
 
