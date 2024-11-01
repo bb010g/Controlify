@@ -55,7 +55,10 @@ loom {
         runConfigs.all {
             ideConfigGenerated(true)
             runDir("../../run")
-            vmArgs("-Dsodium.checks.issue2561=false")
+            property("sodium.checks.issue2561", "false")
+        }
+        runConfigs.getByName("client") {
+            // property("forge.logging.logging.scan", "ACCEPT")
         }
     }
 
@@ -297,7 +300,7 @@ val offlineRemapJar by tasks.registering(RemapJarTask::class) {
 tasks.build { dependsOn(offlineRemapJar) }
 
 tasks.remapJar {
-    if (isNeoforge) {
+    if (isForgeLike) {
         atAccessWideners.add(accessWidenerName)
     }
 }
