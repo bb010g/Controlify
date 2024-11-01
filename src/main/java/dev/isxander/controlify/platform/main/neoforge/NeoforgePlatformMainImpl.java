@@ -31,6 +31,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.IForgeRegistry;
 //?}
 
 import java.nio.file.Path;
@@ -107,8 +108,11 @@ public class NeoforgePlatformMainImpl implements PlatformMainUtilImpl {
 
     @Override
     public <T> Supplier<T> deferredRegister(Registry<T> registry, ResourceLocation id, Supplier<? extends T> registrant) {
-        //return DeferredRegister.create(registry, id.getNamespace()).register(id.getPath(), registrant);
-        return null;
+        //? if neoforge {
+        /*return DeferredRegister.create(registry, id.getNamespace()).register(id.getPath(), registrant);
+        *///?} else {
+        return DeferredRegister.create((IForgeRegistry) registry, id.getNamespace()).register(id.getPath(), registrant);
+        //?}
     }
 
     private IEventBus getModEventBus() {
