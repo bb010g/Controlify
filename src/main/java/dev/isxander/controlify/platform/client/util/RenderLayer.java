@@ -3,7 +3,7 @@ package dev.isxander.controlify.platform.client.util;
 import net.minecraft.client.gui.GuiGraphics;
 import org.jetbrains.annotations.NotNull;
 
-//@FunctionalInterface
+@FunctionalInterface
 public interface RenderLayer
     //? if >1.20.4 {
     /*extends net.minecraft.client.gui.LayeredDraw.Layer
@@ -26,7 +26,7 @@ public interface RenderLayer
         this.render(graphics, partialTick);
     }
     *///?} elif forge {
-    default void render(@NotNull GuiGraphics graphics, float partialTick, int screenWidth, int screenHeight) {
+    default void render(@NotNull net.minecraftforge.client.gui.overlay.ForgeGui gui, @NotNull GuiGraphics graphics, float partialTick, int screenWidth, int screenHeight) {
         this.render(graphics, partialTick);
     }
     //?}

@@ -155,14 +155,18 @@ public class NeoforgePlatformClientImpl implements PlatformClientUtilImpl {
 
     @Override
     public void addHudLayer(ResourceLocation id, RenderLayer renderLayer) {
-        //getModEventBus().addListener(
-        //        //? if >1.20.4 {
-        //        /*RegisterGuiLayersEvent.class,
-        //        *///?} else {
-        //        RegisterGuiOverlaysEvent.class,
-        //        //?}
-        //        e -> e.registerAboveAll(id, renderLayer)
-        //);
+        //? if neoforge {
+        /*getModEventBus().addListener(
+                //? if >1.20.4 {
+                /^RegisterGuiLayersEvent.class,
+                ^///?} else {
+                RegisterGuiOverlaysEvent.class,
+                //?}
+                e -> e.registerAboveAll(id, renderLayer)
+        );
+        *///?} else {
+        getModEventBus().addListener((RegisterGuiOverlaysEvent e) -> e.registerAboveAll(id.getPath(), renderLayer));
+        //?}
     }
 
     @Override

@@ -158,8 +158,8 @@ public class Controlify implements ControlifyApi {
             ServerPolicies.unsetAll();
         });
 
-        //PlatformClientUtil.addHudLayer(CUtil.rl("button_guide"), (graphics, tickDelta) ->
-        //        inGameButtonGuide().ifPresent(guide -> guide.renderHud(graphics, tickDelta)));
+        PlatformClientUtil.addHudLayer(CUtil.rl("button_guide"), (graphics, tickDelta) ->
+                inGameButtonGuide().ifPresent(guide -> guide.renderHud(graphics, tickDelta)));
     }
 
     private void registerBuiltinPack(String id) {
